@@ -1,10 +1,23 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, ButtonBaseActions} from "@material-ui/core"
 import "./Home.css";
 import { Box, Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { TokenState } from "../../store/tokens/TokenReduce";
 
 function Home() {
+    const navigate = useNavigate();
+    const token = useSelector<TokenState,TokenState["tokens"]>((state)=> state.tokens);
+
+
+    useEffect(() => {
+      if (token == "") {
+        alert("Você precisa estar logado", );
+        navigate("/login");
+
+      }}, [token]);
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center" className="caixa">
