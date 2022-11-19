@@ -7,6 +7,7 @@ interface Produtos{
     preco: number;
     tamanho: string;
     quantidade: number;
+    foto: string;
     
     categoria?: Categoria | null
 }

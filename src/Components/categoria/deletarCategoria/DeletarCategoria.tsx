@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Box, Card, CardActions, CardContent, Button, Typography} from '@material-ui/core';
-import './DeletarTema.css';
+import './DeletarCategoria.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { buscaId, deleteId } from '../../../service/Service';
 import Categoria from '../../../model/Categoria';

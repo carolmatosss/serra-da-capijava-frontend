@@ -2,7 +2,7 @@ import React, {useState, useEffect, ChangeEvent} from 'react'
 import { Container, Typography, TextField, Button } from "@material-ui/core"
 import Categoria from '../../../model/Categoria';
 import { buscaId, post, put } from '../../../service/Service';
-import './CadastroTema.css'
+import './CadastroCategoria.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/TokenReduce';
@@ -110,9 +110,9 @@ function CadastroCategoria() {
     return (
         <Container maxWidth="sm" className="topo">
             <form onSubmit={onSubmit}>
-                <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro Categoria</Typography>
+                <Typography variant="h4" component="h1" align="center" className="textoForm">Formulário de cadastro Categoria</Typography>
                 <TextField value={categoria.tipos} onChange={(e: ChangeEvent<HTMLInputElement>)=> updatedcategoria(e)} id="tipos" label="tipos" variant="outlined" name="tipos" margin="normal" fullWidth />
-                <Button type="submit" variant="contained" color="primary">
+                <Button type="submit" variant="contained" className="btnFinalizar">
                     Finalizar
                 </Button>
             </form>
@@ -120,4 +120,4 @@ function CadastroCategoria() {
     )
 }
 
-export default <CadastroCategoria></CadastroCategoria>;
+export default CadastroCategoria;

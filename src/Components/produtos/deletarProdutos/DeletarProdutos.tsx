@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Typography, Button, Box, Card, CardActions, CardContent } from "@material-ui/core"
-import './DeletarPost.css';
+import './DeletarProdutos.css';
 import Produtos from '../../../model/Produtos';
 import { buscaId, deleteId } from '../../../service/Service';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -47,7 +47,7 @@ function DeletarProdutos() {
       })
     }
 function sim() {
-  navigate('/produtos')
+  navigate('/produtos/all')
 
   deleteId(`/produtos/${id}`,{
     headers:{
@@ -68,7 +68,7 @@ function sim() {
 }
 
 function nao(){
-  navigate('/produtos')
+  navigate('/produtos/all')
 }
     
   return (

@@ -8,7 +8,7 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
-import "./ListaTema.css";
+import "./ListaCategoria.css";
 import Categoria from '../../../model/Categoria';
 import { busca } from "../../../service/Service";
 import { useSelector } from "react-redux";
@@ -39,7 +39,7 @@ function ListaCategoria() {
   }, [token]);
 
   async function getCategoria() {
-    await busca("/categoria", getCategoria, {
+    await busca("/categoria", setCategoria, {
       headers: {
         'Authorization': token,
       },
@@ -56,7 +56,7 @@ function ListaCategoria() {
           <Card variant="outlined">
             <CardContent>
               <Typography color="textSecondary" gutterBottom>
-                Tema
+                Categoria
               </Typography>
               <Typography variant="h5" component="h2">
                 {categoria.tipos}
@@ -65,25 +65,20 @@ function ListaCategoria() {
             <CardActions>
               <Box display="flex" justifyContent="center" mb={1.5}>
                 <Link
-                  to={`/formularioCategoria/${categoria.id}`}
+                  to={`/cadastroCategoria/${categoria.id}`}
                   className="text-decorator-none"
                 >
                   <Box mx={1}>
-                    <Button
-                      variant="contained"
-                      className="marginLeft"
-                      size="small"
-                      color="primary"
-                    >
-                      atualizar
-                    </Button>
+                  <Button variant="contained" size='small' className="btnAtualizar" >
+                          atualizar
+                        </Button>
                   </Box>
                 </Link>
                 <Link to={`/deletarCategoria/${categoria.id}`} className="text-decorator-none">
                   <Box mx={1}>
-                    <Button variant="contained" size="small" color="secondary">
-                      deletar
-                    </Button>
+                  <Button variant="contained" size='small' color="secondary" className="btnDeletar">
+                          deletar
+                        </Button>
                   </Box>
                 </Link>
               </Box>

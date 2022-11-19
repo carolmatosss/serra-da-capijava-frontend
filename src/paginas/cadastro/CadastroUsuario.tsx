@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { cadastroUsuario } from "../../service/Service";
 import User from '../../model/UserLogin';
 import "./CadastroUsuario.css";
+import { toast } from "react-toastify";
 
 function CadastroUsuario() {
   let navigate = useNavigate();
@@ -52,15 +53,47 @@ function CadastroUsuario() {
   }
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault()
-    if(confirmarSenha == user.senha){ //verifica se o confirmar senha é igual a senha
-    cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-    alert('Usuario cadastrado com sucesso')
-    }else{
-        alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+    if (confirmarSenha == user.senha) {
+      cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+      toast.success('Usuario cadastrado com sucesso', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+      });
+    } else {
+      toast.error('Dados inconsistentes. Favor verificar as informações de cadastro.', {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+      });
     }
-}
-    
-  
+  }
+
+  const [formCadastro, setFormCadastro] = useState(true)
+
+  const padraoSenha = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/
+
+  const padraoEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+  useEffect(() => {
+    if (user.nome.length >= 2 && user.usuario.match(padraoEmail) && user.senha.match(padraoSenha)) {
+      setFormCadastro(false)
+    } else {
+      setFormCadastro(true)
+    }
+  }, [user])
+
+
   return (
     <Grid container direction="row" justifyContent="center" alignItems="center">
       <Grid item xs={6} className="imagem2" ></Grid>
@@ -70,122 +103,122 @@ function CadastroUsuario() {
             <Typography
               variant="h3"
               gutterBottom
-              color="textPrimary"
               component="h3"
               align="center"
-              className="textos2"
+              className="textos1"
             >
               Cadastrar
             </Typography>
             <TextField
-            value={user.nome}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+              value={user.nome}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
               id="nome"
-              label="nome"
+              label="Nome"
               variant="outlined"
               name="nome"
               margin="normal"
               fullWidth
+              required
             />
             <TextField
-            value={user.endereco}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-              id="endereco"
-              label="endereço"
+              value={user.usuario}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+              id="usuario"
+              label="Usuário (e-mail)"
               variant="outlined"
-              name="endereco"
+              name="usuario"
               margin="normal"
               fullWidth
+              required
             />
             <TextField
-            value={user.cpf}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+              value={user.cpf}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
               id="cpf"
-              label="cpf"
+              label="CPF"
               variant="outlined"
               name="cpf"
               margin="normal"
               fullWidth
+              required
             />
             <TextField
-            value={user.telefone}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-              id="telefone"
-              label="telefone"
-              variant="outlined"
-              name="telefone"
-              margin="normal"
-              fullWidth
-            />
-
-            <TextField
-            value={user.rg}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+              value={user.rg}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
               id="rg"
-              label="rg"
+              label="RG"
               variant="outlined"
               name="rg"
               margin="normal"
               fullWidth
             />
-
             <TextField
-            value={user.foto}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+              value={user.endereco}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+              id="endereco"
+              label="Endereço"
+              variant="outlined"
+              name="endereco"
+              margin="normal"
+              fullWidth
+              required
+            />
+            <TextField
+              value={user.telefone}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+              id="telefone"
+              label="Telefone"
+              variant="outlined"
+              name="telefone"
+              margin="normal"
+              fullWidth
+            />
+            <TextField
+              value={user.foto}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
               id="foto"
-              label="foto"
+              label="Foto"
               variant="outlined"
               name="foto"
               margin="normal"
               fullWidth
             />
-
             <TextField
-            value={user.usuario}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
-              id="usuario"
-              label="usuario"
-              variant="outlined"
-              name="usuario"
-              margin="normal"
-              fullWidth
-            />
-
-            <TextField
-            value={user.senha}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
+              value={user.senha}
+              onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}
               id="senha"
-              label="senha"
+              label="Senha"
               variant="outlined"
               name="senha"
               margin="normal"
               type="password"
               fullWidth
+              required
             />
             <TextField
-            value={confirmarSenha}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              confirmarSenhaHandle(e)
-            }
+              value={confirmarSenha}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                confirmarSenhaHandle(e)
+              }
               id="confirmarsenha"
-              label="confirmar senha"
+              label="Confirmar Senha"
               variant="outlined"
-              name="confirmar senhasenha"
+              name="confirmar senha"
               margin="normal"
               type="password"
               fullWidth
+              required
             />
             <Box marginTop={2} alignItems="center">
               <Link to="/login" className="text-decorator-none">
                 <Button
                   variant="contained"
-                  color="secondary"
-                  className="btCancelar"
+                  className="btnCancelar"
                 >
                   Cancelar
                 </Button>
               </Link>
-              <Button type="submit" variant="contained" color="primary">
+              <Button type="submit" variant="contained" color="primary" className="btnCadastro" disabled={formCadastro}>
                 Cadastrar
               </Button>
             </Box>

@@ -1,11 +1,11 @@
 .imagem2{
-    background-image: url(https://i.imgur.com/aVRy5q5.jpg);
-    background-repeat: no-reapeat;
+    background-image: url(https://imgur.com/Q6PrZjX.jpg);
+    background-repeat: no-repeat;
     width: 100vh;
     min-height: 100vh;
-    background-color: white !important;
-    background-size: cover;
+    background-size: 70%;
     background-position: center;
+    background-color: #FFFEFC;
   
 }
 
@@ -13,10 +13,19 @@
     font-weight: bold !important;
 }
 
-.btCancelar{
-    margin-right: 20px !important;
-
+.btnCancelar{
+    margin-right: 1vw !important;
+    background-color: #F2C894 !important;
 }
+
+.btnCadastro{
+    background-color: #02732A !important;
+    color: white
+}
+
+.btnCadastro:disabled{
+    background-color: lightgray !important;
+  }
 
 .text-decorator-none{
     text-decoration:none ;

@@ -8,6 +8,7 @@ import UserLogin from '../../model/UserLogin';
 import './Login.css';
 import { useDispatch } from 'react-redux';
 import { addToken } from '../../store/tokens/Action';
+import { toast } from 'react-toastify';
 
 function Login() {
 
@@ -39,18 +40,45 @@ function Login() {
     });
   }
 
+  const [loginForm, setLoginForm] = useState(true)
+
+  const padraoEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+  useEffect(() => {
+    if(userLogin.usuario.match(padraoEmail) && userLogin.senha.length >= 8) {
+      setLoginForm(false)
+    } else {
+      setLoginForm(true)
+    }
+  }, [userLogin])
+
   async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    try {
-      await login(`/usuarios/logar`, userLogin, setToken);
-
-      alert("Usuário logado com sucesso ");
-    } catch (error) {
-      alert("Dados não correspondem.");
-    }
+    try{
+      await login(`/usuarios/logar`, userLogin, setToken)
+      toast.success('Usuário logado com sucesso!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+          });
+  }catch(error){
+      toast.error('Dados do usuário inconsistentes. Erro ao logar!', {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+          });
+        }
   }
-
   useEffect(() => {
     if (token !== "") {
 
@@ -60,27 +88,28 @@ function Login() {
   }, [token]);
     
     return (
-        <Grid container direction="row" justifyContent="center" alignItems="center">
+        <Grid container direction="row" justifyContent="center" alignItems="center" className="fundo">
             <Grid alignItems="center" xs={6}>
-                <Box paddingX={20}>
-                    <form onSubmit={onSubmit}>
-                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className="textos1">Entrar</Typography>
+                <Box paddingX={20} className="corFundo">
+                    <form className="formulario" onSubmit={onSubmit}>
+                        <Typography variant="h3" gutterBottom component="h3" align="center" className="textos1">Entrar</Typography>
                         <TextField  value={userLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="usuario" label="Usuário (E-mail)" variant="outlined" name="usuario" margin="normal" fullWidth />
                         <TextField value={userLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id="senha" label="Senha" variant="outlined" name="senha" margin="normal" type='password'fullWidth />
                         <Box marginTop={2} textAlign="center">
-                                <Button type="submit" variant="contained" color="primary">Logar</Button>
+                                <Button type="submit" variant="contained" color="primary" className="loginBtn" disabled={loginForm}>Logar</Button>
                         </Box>
                     </form>
                     <Box display="flex" justifyContent="center" marginTop={2}>
                         <Box marginRight={1}>
-                            <Typography variant="subtitle1" gutterBottom align="center">Não tem uma conta?</Typography>
+                            <Typography className="Conta" variant="subtitle1" gutterBottom align="center">Não tem uma conta?</Typography>
                         </Box>
               <Link to="/cadastrousuario">
               <Typography
                 variant="subtitle1"
                 gutterBottom
                 align="center"
-                className="textos1"
+                className="cadastroBtn"
+                
               >
                 Cadastre-se
               </Typography>

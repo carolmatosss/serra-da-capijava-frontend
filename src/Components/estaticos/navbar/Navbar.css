@@ -16,6 +16,7 @@
     cursor: pointer;
     color: white;
     cursor: pointer;
+    font-family: 'Merriweather', sans-serif !important;
 }
 
 .text-decorator-none{
