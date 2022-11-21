@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/TokenReduce";
 import { addToken } from "../../../store/tokens/Action";
 import { toast } from "react-toastify";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -107,13 +108,13 @@ export default function Navbar() {
         <Toolbar className="barra">
           <div>
             <Link to="/home" className="text-decorator-none">
-              <img src="https://imgur.com/EW50AWW.png" alt="Logotipo" height={50} width={100} />
+              <img src="https://imgur.com/EW50AWW.png" alt="Logotipo" height={60} />
             </Link>
           </div>
           <Box className="textos">
             <Link to="/sobre" className="text-decorator-none">
               <Box mx={1} className="cursor">
-                <Typography variant="h6" className="typo">
+                <Typography className="typo">
                   Sobre Nós
                 </Typography>
               </Box>
@@ -121,7 +122,7 @@ export default function Navbar() {
             <Divider orientation="vertical" flexItem />
             <Link to="/produtos/all" className="text-decorator-none">
               <Box mx={1} className="cursor">
-                <Typography variant="h6" className="typo">
+                <Typography className="typo">
                   Produtos
                 </Typography>
               </Box>
@@ -129,7 +130,7 @@ export default function Navbar() {
             <Divider orientation="vertical" flexItem />
             <Link to="/categoria" className="text-decorator-none">
               <Box mx={1} className="cursor">
-                <Typography variant="h6" className="typo">
+                <Typography className="typo">
                   Categorias
                 </Typography>
               </Box>
@@ -137,7 +138,7 @@ export default function Navbar() {
             <Divider orientation="vertical" flexItem />
             <Link to="/cadastroProduto" className="text-decorator-none">
               <Box mx={1} className="cursor">
-                <Typography variant="h6" className="typo">
+                <Typography className="typo">
                   Cadastrar Produtos
                 </Typography>
               </Box>
@@ -145,21 +146,26 @@ export default function Navbar() {
             <Divider orientation="vertical" flexItem />
             <Link to="/cadastroCategoria" className="text-decorator-none">
               <Box mx={1} className="cursor">
-                <Typography variant="h6" className="typo">
+                <Typography className="typo">
                   Cadastrar Categorias
                 </Typography>
+              </Box>
+              </Link>
+              <Divider orientation="vertical" flexItem />
+            <Link to="/carrinho" className="text-decorator-none">
+              <Box mx={1} className="cursor">
+                <img src="https://i.imgur.com/nxXesY7.png" alt="Macacode com Carrinho" height={50}/>             
               </Box>
             </Link>
             <Divider orientation="vertical" flexItem />
             <Box onClick={goLogout}>
-              <Typography variant="h6" className="typo">
+              <Typography className="typo">
                 Sair
               </Typography>
             </Box>
           </Box>
         </Toolbar>
       </AppBar>
-
 
   }
   return (

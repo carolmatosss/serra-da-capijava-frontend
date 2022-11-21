@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Box,
@@ -19,6 +19,29 @@ function ListaCategoria() {
   let navigate = useNavigate();
   const [categoria, setCategoria] = useState<Categoria[]>([]);
   const token = useSelector<TokenState,TokenState["tokens"]>((state)=> state.tokens);
+  const [categoriaBuscado, setCategoriaBuscado] = useState('')
+
+  function updateBusca(event: ChangeEvent<HTMLInputElement>){
+    setCategoriaBuscado(
+      event.target.value
+    )
+  }
+  async function buscaCategoria() {
+    if(categoriaBuscado !== ''){
+      await busca(`/categoria/tipo/${categoriaBuscado}`, setCategoria, {
+        headers: {
+          Authorization: token
+        }
+      })
+    } else {
+      await busca('/categoria', setCategoria, {
+        headers: {
+          Authorization: token
+        }
+      })
+    }
+  }
+
 
 
   useEffect(() => {
@@ -51,6 +74,22 @@ function ListaCategoria() {
   }, [categoria.length]);
   return (
     <>
+    <div className="group">
+        <input placeholder="Procurar categoria" type="Procurar" className="input" name='busca' onChange={(event: ChangeEvent<HTMLInputElement>) => updateBusca(event)} />
+        <svg className="icon" onClick={buscaCategoria} aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+      </div>
+
+      <Box className="containerLista">
+
+      {categoria.length === 0 && <div className="preloader-inner">
+          <span className="dot"></span>
+          <div className="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>}
+
       {categoria.map((categoria) => (
         <Box m={2}>
           <Card variant="outlined">
@@ -86,8 +125,10 @@ function ListaCategoria() {
           </Card>
         </Box>
       ))}
+      </Box>
     </>
   );
 }
+
 
 export default ListaCategoria;

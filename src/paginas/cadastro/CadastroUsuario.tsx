@@ -3,7 +3,7 @@ import { Grid, Typography, Button, TextField } from "@material-ui/core";
 import { Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { cadastroUsuario } from "../../service/Service";
-import User from '../../model/UserLogin';
+import User from '../../model/User';
 import "./CadastroUsuario.css";
 import { toast } from "react-toastify";
 

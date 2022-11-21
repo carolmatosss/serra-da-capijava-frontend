@@ -8,26 +8,39 @@ import { Grid, Tab, Tabs } from "@mui/material";
 function Sobre() {
   return (
     <>
-        <Typography variant="h1" className="titulos" >Sobre</Typography>
-        <Typography className="texto1">
-            Você sabia que a Serra da Capivara, no Piauí, tem a maior concentração
-            de sítios arqueológicos do mundo? Nós, da CapiJava, por meio de nosso
-            projeto sem fins lucrativos,buscamos a preservação desse patrimônio
-            cultural.
+        <Typography variant="h1" className="titulos" >Sobre Nós</Typography>
+        <Grid container direction="row" justifyContent="center" alignItems="center">
+        
+        <Grid item xs={9} padding="2rem" className="texto1">
+          <Typography className="texto1">
+          Somos um grupo formado por <strong>7 mulheres</strong>, que através de muita determinação coletiva e aprimoramento pessoal, uniram-se para desenvolver o projeto com tecnologias como <strong>Java, MySQL, React e TypeScript,</strong> o qual desejamos apresentar como trabalho que nos introduz para o campo profissional da tecnologia.
           </Typography>
+          <br />
+          <Typography>
+          Sempre buscando valorizar cada integrante do grupo, <strong>respeitando nossas individualidades e processos,</strong>  produzimos um projeto que conta com a contribuição ativa de cada uma, de forma que todas pudessem explorar o aprendizado obtido ao longo do BootCamp para a chegada ao objetivo principal.
+          </Typography>
+        </Grid>
+        <Grid item xs={3} className="boxFoto1">
+          <img
+            className="imgBox1"
+            src="https://i.imgur.com/35Xr6oE.gif"
+            alt="imagem da Serra da Capivara"
+          />
+        </Grid>
+      </Grid>
         <Typography className="titulos">Serra da Capivara</Typography>
       <Grid container direction="row" justifyContent="center" alignItems="center">
         <Grid item xs={3} className="boxFoto1">
           <img
             className="imgBox1"
-            src="https://i.imgur.com/oet0gl6.jpg"
+            src="https://i.imgur.com/UWjb6mC.jpeg"
             alt="imagem da Serra da Capivara"
           />
         </Grid>
         <Grid item xs={9} padding="2rem" className="texto1">
           <Typography className="texto1">
-            Você sabia que a Serra da Capivara, no Piauí, tem a maior concentração
-            de sítios arqueológicos do mundo? Nós, da CapiJava, por meio de nosso
+            Você sabia que a Serra da Capivara, no Piauí, tem a <strong>maior concentração
+            de sítios arqueológicos do mundo?</strong> Nós, da CapiJava, por meio de nosso
             projeto sem fins lucrativos,buscamos a preservação desse patrimônio
             cultural.
           </Typography>
@@ -36,13 +49,13 @@ function Sobre() {
       <Grid container direction="row" justifyContent="center" alignItems="center">
         <Grid item xs={9} padding="2rem">
           <Typography className="texto1">
-            O Parque Nacional Serra da Capivara foi criado em 1979, para preservar vestígios arqueológicos da mais remota presença do homem na América do Sul. Sua demarcação foi concluída em 1990 e o parque é subordinado ao Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio). Por sua importância, a Unesco o inscreveu na Lista do Patrimônio Mundial em 13 de dezembro de 1991, e também na Lista Indicativa brasileira como patrimônio misto.
+            O Parque Nacional Serra da Capivara foi criado em <strong>1979</strong> , para preservar vestígios arqueológicos da mais <strong> remota presença do homem na América do Sul</strong>. Sua demarcação foi concluída em 1990 e o parque é subordinado ao Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio). Por sua importância, a Unesco o inscreveu na Lista do Patrimônio Mundial em 13 de dezembro de 1991, e também na Lista Indicativa brasileira como patrimônio misto.
           </Typography>
         </Grid>
         <Grid item xs={3} className="boxFoto1">
           <img
             className="imgBox1"
-            src="https://i.imgur.com/C0ZLn4c.jpg"
+            src="https://i.imgur.com/YT4qAUM.jpeg"
             alt="Foto de uma onça pintada"
           />
         </Grid>
@@ -159,7 +172,7 @@ function Sobre() {
 
             <div className="back">
               <div className="back-content">
-                <h2>Roberta Ribero</h2>
+                <h2>Roberta Ribeiro</h2>
 
                 <div className="icons">
                   <a target="_blank" href="https://www.linkedin.com/in/roberta-ribeiro-ela-she-b5521a4b/"><LinkedInIcon /></a>

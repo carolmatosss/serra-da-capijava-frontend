@@ -18,17 +18,19 @@ import CadastroCategoria from './Components/categoria/cadastroCategoria/Cadastro
 import DeletarCategoria from './Components/categoria/deletarCategoria/DeletarCategoria';
 import DeletarProdutos from './Components/produtos/deletarProdutos/DeletarProdutos';
 import VLibras from 'vlibras-react';
+import Carrinho from './paginas/carrinho/Carrinho';
+import Inicial from './paginas/inicial/Inicial';
 
 function App() {
   return (
     <Provider store={store}>
-       <VLibras />
-       <ToastContainer/>      
+       <ToastContainer/> 
+       <VLibras />     
       <Router>
       <div style={{ minHeight: "100vh" }}>
         <Navbar />
           <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Inicial />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/sobre" element={<Sobre />} />
@@ -41,6 +43,7 @@ function App() {
           <Route path="/cadastroCategoria/:id" element={<CadastroCategoria/>} />
           <Route path="/deletarCategoria/:id" element={<DeletarCategoria />} />
           <Route path="/deletarProdutos/:id" element={<DeletarProdutos/>}/>
+          <Route path="/carrinho" element={<Carrinho />}/>
           </Routes>
           </div>
         <Footer />

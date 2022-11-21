@@ -2,14 +2,14 @@
 import React, { useEffect } from "react";
 import { Button, ButtonBaseActions } from "@material-ui/core"
 import "./Home.css";
-import { Avatar, Box, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { AppBar, Avatar, Box, Card, CardActions, CardContent, CardMedia, Grid, Tab, Tabs, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { TokenState } from "../../store/tokens/TokenReduce";
 import { toast } from "react-toastify";
 import TabProdutos from "../../Components/produtos/tabProdutos/TabProdutos";
-import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+import AliceCarousel from "react-alice-carousel";
 
 function Home() {
     const navigate = useNavigate();
@@ -39,175 +39,135 @@ function Home() {
     };
 
     const imagens = [
-<Card
+        <Card
             sx={{
-                maxWidth: "20rem",
-                maxHeight: "40rem",
+                minHeight: "35vh"
             }}
             className="space"
         >
             <CardMedia
                 component="img"
                 height="140"
-                image="https://imgur.com/QOq4wCq.jpg"
-                alt="ONG Banco de Alimentos"
+                image="https://i.imgur.com/JUhpDBT.jpg"
+                alt="Dra. Niede Guildon"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Banco de Alimentos
+                <Typography gutterBottom variant="h5" component="div" className="tituloCar">
+                    Dra. Niede Guildon
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    A ONG Banco de Alimentos é uma associação civil que recolhe alimentos
-                    que já perderam valor de prateleira no comércio e indústria, mas ainda
-                    estão aptos para consumo, e os distribui onde são mais necessários.
+                <Typography variant="body2" className="textoCar">
+                    A Serra da Capivara teve entre um dos seus pesquisadores pioneiros, uma mulher, a arqueóloga Dra. Niede Guildon, nos anos de 1970, sendo fundamental para a criação do parque de preservação anos depois.
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Saiba Mais</Button>
-            </CardActions>
         </Card>,
 
-<Card
+        <Card
             sx={{
-                maxWidth: "20rem",
-                maxHeight: "40rem",
+                minHeight: "35vh"
             }}
             className="space"
         >
             <CardMedia
                 component="img"
                 height="140"
-                image="https://imgur.com/EXWZX57.jpg"
-                alt="Ampara animal"
+                image="https://i.imgur.com/hb9t2bx.jpg"
+                alt="Paisagem Serra da Capivara"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Ampara animal
+                <Typography gutterBottom variant="h5" component="div" className="tituloCar">
+                    Decreto nº 83.548
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    A AMPARA é uma OSCIP sem fins lucrativos. Somos protetores de animais
-                    abandonados e vítimas de maus-tratos. Lutamos para que os mais de 30
-                    milhões de animais de rua tenham uma vida com respeito e amor.
+                <Typography variant="body2" color="text.secondary" className="textoCar">
+                    O Parque Nacional da Serra da Capivara foi fundado em 1979 , pelo decreto de n° 83.548, e foi subordinado ao Instituto Chico Mendes de Conservação da Biodiversidade (ICMBio). Hoje, é reconhecido pela Unesco e Itamaraty como Patrimônio Cultural da Humanidade.
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Saiba Mais</Button>
-            </CardActions>
         </Card>,
 
-<Card
+        <Card
             sx={{
-                maxWidth: "20rem",
-                maxHeight: "40rem",
+                minHeight: "35vh"
             }}
             className="space"
         >
             <CardMedia
                 component="img"
                 height="140"
-                image="https://imgur.com/f1Nbfp4.jpg"
-                alt="Juntos somos mais"
+                image="https://i.imgur.com/J8r5IYq.jpg"
+                alt="Figuras rupestres"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Juntos somos mais
+                <Typography gutterBottom variant="h5" component="div" className="tituloCar">
+                    Sítios Arqueológicos
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                    reprehenderit excepturi ex, voluptatibus quia aspernatur. Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Non id provident fugiat
-                    quas quia.
+                <Typography variant="body2" color="text.secondary" className="textoCar">
+                    O Parque Nacional da Serra da Capivara conta com mais de mil sítios arqueológicos, atualmente, em que sua maioria são abertos à visitação pública.
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Saiba Mais</Button>
-            </CardActions>
         </Card>,
 
-<Card
+        <Card
             sx={{
-                maxWidth: "20rem",
-                maxHeight: "40rem",
+                minHeight: "35vh"
             }}
             className="space"
         >
             <CardMedia
                 component="img"
                 height="140"
-                image="https://imgur.com/tQ9bqNN.jpg"
-                alt="Um coração"
+                image="https://i.imgur.com/QS9zucy.jpg"
+                alt="Paisagem Serra da Capivara"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Um coração
+                <Typography gutterBottom variant="h5" component="div" className="tituloCar">
+                    Importância Socioeconômica
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                    reprehenderit excepturi ex, voluptatibus quia aspernatur. Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Non id provident fugiat
-                    quas quia.
+                <Typography variant="body2" color="text.secondary" className="textoCar">
+                    O Parque também tem conta com a atuação socioeconômica para a comunidade ao redor, em que uma das atrações é a confecção e venda de cerâmicas artesanais construídas pelos moradores locais.
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Saiba Mais</Button>
-            </CardActions>
         </Card>,
 
-<Card
+        <Card
             sx={{
-                maxWidth: "20rem",
-                maxHeight: "40rem",
+                minHeight: "35vh"
             }}
             className="space"
         >
             <CardMedia
                 component="img"
                 height="140"
-                image="https://imgur.com/j3GDnIq.jpg"
-                alt="Plan International"
+                image="https://i.imgur.com/H9iUIMA.jpg"
+                alt="Fóssil de crânio humano"
             />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    Plan International
+                <Typography gutterBottom variant="h5" component="div" className="tituloCar">
+                    Fósseis
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Uma organização humanitária, não governamental e sem fins lucrativos,
-                    que promove os direitos das crianças e a igualdade para as meninas.
-                    Acreditamos no poder e potencial de todas as crianças.
+                <Typography variant="body2" color="text.secondary" className="textoCar">
+                    Os sítios arqueológicos são palco para descobertas importantes para a história da humanidade. Fósseis com mais de 50 mil anos, e artefatos históricos, podem ser encontrados nos diversos museus distribuídos pelo parque.
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small">Saiba Mais</Button>
-            </CardActions>
         </Card>
     ];
 
     return (
         <>
             <Grid container direction="row" justifyContent="center" alignItems="center" className="caixa">
-                <Grid alignItems="center" item xs={6}>
-                    <Box paddingX={20} >
-                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className="titulo">Seja bem vindo(a)!</Typography>
-                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" className="subtitulo">Expresse aqui os seus pensamentos e opiniões!</Typography>
-                    </Box>
-                    <Box display="flex" justifyContent="center">
-                        <Box marginRight={1}>
-                        </Box>
-                        <Button variant="outlined" className="botao">Ver Postagens</Button>
-                    </Box>
-                </Grid>
-                <Grid item xs={6} >
-                    <img src="https://i.imgur.com/clJVUH7.png" alt="" width="500px" height="500px" />
+               
+                <Grid item className="banner" xs={12} >
+                    
+                    
                 </Grid>
                 <Grid xs={12} className="produtos">
                 </Grid>
             </Grid>
             <TabProdutos />
             <Grid>
-                <div className="faixa">
-                    <p className="faixa-margin"> PARCEIROS </p>
-                    <hr></hr>
-                </div>
+                <AppBar position="static" className="appbar">
+                    <Tabs centered style={{ color: "C589E8" }}>
+                        <Tab label="Você Sabia?" value="1" className="tab" />
+                    </Tabs>
+                </AppBar>
 
                 <div>
                     <Box justifyContent="center" display="flex" className="card">

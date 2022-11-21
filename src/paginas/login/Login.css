@@ -1,65 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family= Merriweather & display = swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family= Merriweather & display = swap");
 
-
-.textos1{
+* {
+  text-decoration: none;
+}
+.textos1 {
   font-weight: bold !important;
 }
 
-.imagem{
+.imagem {
   background-image: url(https://imgur.com/zpzSrQ3.png);
   background-repeat: no-repeat;
   width: 100vh;
   min-height: 100vh;
   background-size: 90%;
   background-position: center;
-  background-color: #e9845d;
+
 }
 
-.formulario{
-  font-family: 'Josefin Sans', sans-serif !important;
+.formulario {
+  font-family: "Josefin Sans", sans-serif !important;
+ 
 }
 
-
-
-
-.text-decorator-none{
-  text-decoration: none;
+.fundo {
+  background-image: url("https://i.imgur.com/mvyykd9.png") !important;
 }
 
-.fundo{
-  background-color: #e9845d;
+.textos1 {
+  color: #02732a !important;
+  font-family: "Josefin Sans", sans-serif !important;
 }
 
-.textos1{
-  color: #02732A;
-  font-family: 'Josefin Sans', sans-serif !important;
-}
-
-.loginBtn{
+.loginBtn {
   background-color: #e5a04b !important;
   color: white;
-  font-family: 'Josefin Sans', sans-serif !important;
+  font-family: "Josefin Sans", sans-serif !important;
 }
 
-.loginBtn:disabled{
+.loginBtn:disabled {
   background-color: lightgray !important;
 }
 
-.cadastroBtn{
-  color: #f7926b;
+.cadastroBtn {
+  color: #e5a04b;
   font-weight: bold !important;
   text-decoration: none !important;
-  font-family: 'Josefin Sans', sans-serif !important;
+  font-family: "Josefin Sans", sans-serif !important;
 }
 
-.Conta{
-  font-family: 'Josefin Sans', sans-serif !important;
+.Conta {
+  font-family: "Josefin Sans", sans-serif !important;
 }
 
-.corFundo{
+.corFundo {
+  width: 35vw!important;
+  height: 60vh!important;
+  margin-left: 50px!important;
   background-color: #F2EBDF;
-  margin-left: 1rem;
   border-radius: 1rem;
   padding: 1rem 0;
+}
+
+.logo-login img {
+  max-width: 250px;
+  max-height: 2150px;
+  transform: translate(30%, -950%);
+}
+
+
+.redes{
+  font-size: 60px !important;
+ color: #e9845d;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+  border-color: #02732A!important;
 }
